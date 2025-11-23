@@ -3,8 +3,6 @@
 A convolutional autoencoder trained to remove Gaussian noise from CIFAR-10 images.
 The model uses a **3-layer encoder** and **3-layer decoder** with strided convolutions and transposed convolutions to learn a compact latent representation and reconstruct clean images.
 
----
-
 ## Model Architecture
 
 ### **Encoder**
