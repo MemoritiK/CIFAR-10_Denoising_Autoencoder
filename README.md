@@ -30,6 +30,3 @@ The architecture compresses images from **3×32×32 → 128×4×4** and reconstr
 ## Results
 <img width="864" height="886" alt="image" src="https://github.com/user-attachments/assets/6dfdf444-f580-43ef-943d-ba377694fc3d" />
 <img width="584" height="455" alt="image" src="https://github.com/user-attachments/assets/62b8ebf9-ea4c-42f3-9baf-8e909442eb30" />
-
-
-
