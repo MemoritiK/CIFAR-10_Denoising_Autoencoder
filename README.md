@@ -1,10 +1,10 @@
 # STL-10 Image Denoising with Lightweight U-Net
 
-A convolutional neural network trained to remove Gaussian noise from STL-10 images (96×96 RGB). The model uses a **10-layer U-Net architecture** with skip connections and residual learning to preserve spatial details while effectively denoising.
+A convolutional neural network trained to remove Gaussian noise from STL-10 images (96×96 RGB). The model uses a **14-layer U-Net architecture** with skip connections and residual learning to preserve spatial details while effectively denoising.
 
 ## Model Architecture
 
-### **Encoder (6 conv layers)**
+### **Encoder (5 conv layers)**
 - **Level 1:** Conv(3 → 32) → Conv(32 → 32), MaxPool2d (96×96 → 48×48)
 - **Level 2:** Conv(32 → 64) → Conv(64 → 64), MaxPool2d (48×48 → 24×24)
 - **Level 3:** Conv(64 → 128), MaxPool2d (24×24 → 12×12)
@@ -12,10 +12,10 @@ A convolutional neural network trained to remove Gaussian noise from STL-10 imag
 ### **Bottleneck (2 conv layers)**
 - Conv(128 → 256) → Conv(256 → 256)
 
-### **Decoder (3 conv layers + output)**
-- **Level 3:** ConvTranspose2d(256 → 128) → Concat with encoder level 3 → Conv(256 → 128)
-- **Level 2:** ConvTranspose2d(128 → 64) → Concat with encoder level 2 → Conv(128 → 64)
-- **Level 1:** ConvTranspose2d(64 → 32) → Concat with encoder level 1 → Conv(64 → 32)
+### **Decoder (6 conv layers)**
+- **Level 3:** ConvTranspose2d(256 → 128) → Concat with e3 → Conv(256 → 128) → Conv(128 → 128)
+- **Level 2:** ConvTranspose2d(128 → 64) → Concat with e2 → Conv(128 → 64) → Conv(64 → 64)
+- **Level 1:** ConvTranspose2d(64 → 32) → Concat with e1 → Conv(64 → 32) → Conv(32 → 32)
 - **Output:** 1×1 Conv(32 → 3) with residual connection
 
 The architecture compresses images from **3×96×96 → 256×12×12** and reconstructs them back with skip connections preserving fine details.
